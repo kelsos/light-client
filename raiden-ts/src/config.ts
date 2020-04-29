@@ -99,7 +99,7 @@ export function makeDefaultConfig(
     confirmationBlocks: 5,
     logger: 'info',
     caps: {
-      [Capabilities.NO_DELIVERY]: true,
+      [Capabilities.NO_DELIVERY]: false,
       [Capabilities.NO_RECEIVE]: true,
       [Capabilities.NO_MEDIATE]: true,
       [Capabilities.WEBRTC]: true,
