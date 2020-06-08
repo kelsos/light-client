@@ -16,6 +16,7 @@
                 min-height="200"
               >
                 <notification-card
+                  :notification="notification"
                   class="notification-panel-content__notifications__notification-wrapper__notification"
                 />
               </v-lazy>
@@ -29,29 +30,21 @@
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
+import { mapGetters } from 'vuex';
+import { Notification } from '@/model/types';
 import NavigationMixin from '@/mixins/navigation-mixin';
 import NotificationCard from '@/components/notification-panel/NotificationCard.vue';
 
 @Component({
   components: {
     NotificationCard
+  },
+  computed: {
+    ...mapGetters(['notifications'])
   }
 })
 export default class NotificationPanel extends Mixins(NavigationMixin) {
-  notifications: any = [
-    { id: '1234', title: 'some title', description: 'some description' },
-    '2',
-    '3',
-    '3',
-    '3',
-    '3',
-    '3',
-    '3',
-    '3',
-    '3',
-    '3',
-    '3'
-  ];
+  notifications!: Notification[];
 }
 </script>
 
