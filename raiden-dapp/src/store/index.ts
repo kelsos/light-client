@@ -51,7 +51,8 @@ const _defaultState: RootState = {
     useRaidenAccount: true
   },
   config: {},
-  userDepositTokenAddress: ''
+  userDepositTokenAddress: '',
+  notifications: []
 };
 
 export function defaultState(): RootState {

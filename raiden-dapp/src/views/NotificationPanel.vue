@@ -4,9 +4,25 @@
       <div class="notification-panel-content__close">
         <v-icon icon @click="onModalBackClicked()">mdi-close</v-icon>
       </div>
-      <div class="notification-panel-content__notification-wrapper">
-        <notification-card />
-      </div>
+      <v-container class="notification-panel-content__notifications" fluid>
+        <div
+          class="notification-panel-content__notifications__notification-wrapper"
+        >
+          <v-list color="transparent">
+            <div v-for="(notification, index) in notifications" :key="index">
+              <v-lazy
+                transition="fade-transition"
+                :options="{ threshold: 0.7 }"
+                min-height="200"
+              >
+                <notification-card
+                  class="notification-panel-content__notifications__notification-wrapper__notification"
+                />
+              </v-lazy>
+            </div>
+          </v-list>
+        </div>
+      </v-container>
     </div>
   </div>
 </template>
@@ -21,7 +37,22 @@ import NotificationCard from '@/components/notification-panel/NotificationCard.v
     NotificationCard
   }
 })
-export default class NotificationPanel extends Mixins(NavigationMixin) {}
+export default class NotificationPanel extends Mixins(NavigationMixin) {
+  notifications: any = [
+    { id: '1234', title: 'some title', description: 'some description' },
+    '2',
+    '3',
+    '3',
+    '3',
+    '3',
+    '3',
+    '3',
+    '3',
+    '3',
+    '3',
+    '3'
+  ];
+}
 </script>
 
 <style scoped lang="scss">
@@ -62,8 +93,21 @@ export default class NotificationPanel extends Mixins(NavigationMixin) {}
     margin: 30px 30px 0 0;
   }
 
-  &__notification-wrapper {
-    margin: 20px 40px 0 40px;
+  &__notifications {
+    height: 100%;
+    margin-bottom: 30px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    width: 100%;
+
+    &__notification-wrapper {
+      max-height: 200px;
+      margin: 0 25px 0 25px;
+
+      &__notification {
+        margin-bottom: 20px;
+      }
+    }
   }
 }
 </style>

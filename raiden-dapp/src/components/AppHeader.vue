@@ -46,7 +46,21 @@
               width="25px"
               @click.native="navigateToNotifications()"
             >
+              <v-badge
+                v-if="notifications"
+                color="notification"
+                overlap
+                bordered
+                dot
+              >
+                <v-img
+                  height="30px"
+                  width="25px"
+                  :src="require('@/assets/notifications.svg')"
+                />
+              </v-badge>
               <v-img
+                v-else
                 height="30px"
                 width="25px"
                 :src="require('@/assets/notifications.svg')"
@@ -91,6 +105,8 @@ export default class AppHeader extends Mixins(NavigationMixin) {
   isConnected!: boolean;
   defaultAccount!: string;
   network!: string;
+  // TODO: Notifications array in state
+  notifications: boolean = true;
 
   get canGoBack(): boolean {
     const routesWithoutBackBtn: string[] = [
