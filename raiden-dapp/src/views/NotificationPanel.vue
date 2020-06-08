@@ -4,7 +4,20 @@
       <div class="notification-panel-content__close">
         <v-icon icon @click="onModalBackClicked()">mdi-close</v-icon>
       </div>
-      <v-container class="notification-panel-content__notifications" fluid>
+      <v-row
+        v-if="notifications.length === 0"
+        class="notification-panel-content__no-notifications full-height"
+        no-gutters
+        justify="center"
+        align="center"
+      >
+        {{ $t('notifications.no-notifications') }}
+      </v-row>
+      <v-container
+        v-else
+        class="notification-panel-content__notifications"
+        fluid
+      >
         <div
           class="notification-panel-content__notifications__notification-wrapper"
         >
@@ -84,6 +97,11 @@ export default class NotificationPanel extends Mixins(NavigationMixin) {
     display: flex;
     justify-content: flex-end;
     margin: 30px 30px 0 0;
+  }
+
+  &__no-notifications {
+    font-size: 24px;
+    margin-bottom: 60px;
   }
 
   &__notifications {
