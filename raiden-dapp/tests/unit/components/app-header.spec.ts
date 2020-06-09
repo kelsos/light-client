@@ -48,7 +48,7 @@ describe('AppHeader.vue', () => {
 
     expect(newNotificationsBadge.exists()).toBe(false);
 
-    // ! Needs the proper action/mutation for setting newNotifications flag to true
+    // TODO: Needs the proper action/mutation for setting newNotifications flag to true
     store.state.newNotifications = true;
 
     await wrapper.vm.$nextTick();
