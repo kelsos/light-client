@@ -53,7 +53,8 @@ const _defaultState: RootState = {
   },
   config: {},
   userDepositTokenAddress: '',
-  notifications: []
+  notifications: [],
+  newNotifications: false
 };
 
 export function defaultState(): RootState {
@@ -142,6 +143,9 @@ const store: StoreOptions<RootState> = {
       state.notifications = state.notifications.filter(
         notification => notification.id != id
       );
+    },
+    viewedNotifications(state: RootState) {
+      state.newNotifications = false;
     }
   },
   actions: {},

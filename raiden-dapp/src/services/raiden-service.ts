@@ -485,6 +485,10 @@ export default class RaidenService {
   deleteNotification(id: string) {
     this.store.commit('deleteNotification', id);
   }
+
+  viewedNotifications() {
+    this.store.commit('viewedNotifications');
+  }
 }
 
 export class ChannelSettleFailed extends Error {}

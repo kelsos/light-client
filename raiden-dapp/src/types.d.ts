@@ -26,6 +26,7 @@ export interface RootState {
   config: Partial<RaidenConfig>;
   userDepositTokenAddress: string;
   notifications: Notification[];
+  newNotifications: boolean;
 }
 
 declare global {

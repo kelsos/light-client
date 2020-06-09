@@ -44,10 +44,10 @@
               icon
               height="30px"
               width="25px"
-              @click.native="navigateToNotifications()"
+              @click.native="notificationPanel()"
             >
               <v-badge
-                v-if="notifications"
+                v-if="newNotifications"
                 color="notification"
                 overlap
                 bordered
@@ -97,7 +97,7 @@ import AddressDisplay from '@/components/AddressDisplay.vue';
     AddressDisplay
   },
   computed: {
-    ...mapState(['loading', 'defaultAccount']),
+    ...mapState(['loading', 'defaultAccount', 'newNotifications']),
     ...mapGetters(['network', 'isConnected'])
   }
 })
@@ -105,8 +105,12 @@ export default class AppHeader extends Mixins(NavigationMixin) {
   isConnected!: boolean;
   defaultAccount!: string;
   network!: string;
-  // TODO: Notifications array in state
-  notifications: boolean = true;
+  newNotifications!: boolean;
+
+  notificationPanel = () => {
+    this.$raiden.viewedNotifications();
+    this.navigateToNotifications();
+  };
 
   get canGoBack(): boolean {
     const routesWithoutBackBtn: string[] = [
